@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel's Air Care - Professional HVAC Services</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Gabriel's Air Care - Expert HVAC Services in Waddell, AZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
-            --primary-color: #007bff;   /* Blue for accents, buttons */
-            --dark-accent: #2c3e50;     /* Dark Blue-Grey for header, darker elements */
-            --light-background: #f8f9fa; /* Very Light Grey for alternating sections */
-            --text-dark: #333333;       /* Dark text for readability */
-            --text-light: #ffffff;      /* Light text for dark backgrounds */
-            --border-radius: 8px;
+            --primary-blue: #1A5276;     /* Deep Steel Blue - primary accent */
+            --secondary-blue: #5DADE2;   /* Lighter, brighter blue for highlights */
+            --dark-grey: #34495E;        /* Dark Slate Grey - for text, headers */
+            --light-grey: #ECF0F1;       /* Very Light Grey - for section backgrounds */
+            --white: #ffffff;
+            --text-color: #333333;
+            --border-radius: 6px;
             --transition-speed: 0.3s;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--light-background);
-            color: var(--text-dark);
+            background-color: var(--light-grey);
+            color: var(--text-color);
             line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -35,10 +37,10 @@
 
         /* Header & Navigation */
         header {
-            background: var(--dark-accent);
-            color: var(--text-light);
+            background: var(--dark-grey);
+            color: var(--white);
             padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -52,9 +54,10 @@
 
         .logo h1 {
             margin: 0;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2em;
-            color: var(--text-light);
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5em;
+            color: var(--white);
+            letter-spacing: 1px;
         }
 
         nav ul {
@@ -65,188 +68,185 @@
         }
 
         nav ul li {
-            margin-left: 25px;
+            margin-left: 30px;
         }
 
         nav ul li a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
-            font-weight: 600;
-            padding: 5px 0;
+            font-weight: 500;
+            padding: 8px 0;
             transition: color var(--transition-speed), border-bottom var(--transition-speed);
         }
 
         nav ul li a:hover, nav ul li a.active {
-            color: #b0d8ff; /* Lighter blue for hover */
-            border-bottom: 2px solid #b0d8ff;
+            color: var(--secondary-blue);
+            border-bottom: 2px solid var(--secondary-blue);
         }
 
         .contact-info-header {
-            font-weight: 600;
+            font-weight: 500;
             display: flex;
             align-items: center;
         }
         .contact-info-header a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
-            margin-left: 15px;
+            margin-left: 20px;
             transition: color var(--transition-speed);
         }
         .contact-info-header a:hover {
-            color: #b0d8ff;
+            color: var(--secondary-blue);
         }
 
         /* Hero Section */
         #hero {
-            background: #ffffff;
-            text-align: center;
             position: relative;
-            overflow: hidden;
+            height: 70vh; /* Adjust for more prominent hero */
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 80vh;
-            padding: 50px 0;
-            box-sizing: border-box;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
         }
 
-        #hero .hero-image-placeholder {
-            background-color: #cccccc; /* Placeholder for hero image */
-            background-image: url('YOUR_HVAC_HERO_IMAGE_URL_HERE'); /* Replace with actual image */
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100%;
+        #hero .hero-background {
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image_9a2dd3.jpg'); /* Using the provided image */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6) blur(2px); /* Darken and blur slightly */
+            transform: scale(1.02); /* Slight scale to hide blur edges */
             z-index: 1;
         }
 
         #hero .image-overlay {
-            background-color: rgba(44, 62, 80, 0.85); /* Dark Blue-Grey with transparency */
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 80px 20px;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: var(--text-light);
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+            height: 100%;
+            background-color: rgba(26, 82, 118, 0.75); /* Primary Blue with transparency */
             z-index: 2;
         }
 
-        #hero .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
+        #hero .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
             padding: 0 20px;
-            box-sizing: border-box;
         }
 
         #hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.8em;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--text-light);
+            font-family: 'Oswald', sans-serif;
+            font-size: 4em;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            letter-spacing: 0.5px;
         }
 
         #hero p {
-            font-size: 1.4em;
+            font-size: 1.5em;
             margin-bottom: 40px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--text-light);
+            font-weight: 300;
         }
 
         .btn-group {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
         }
 
         .btn {
-            background: var(--primary-color);
-            color: white;
-            padding: 18px 35px;
+            background: var(--secondary-blue);
+            color: var(--white);
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: var(--border-radius);
-            font-weight: 600;
-            transition: background var(--transition-speed), transform var(--transition-speed);
+            font-weight: 700;
+            transition: background var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
             border: none;
             cursor: pointer;
-            font-size: 1.2em;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-size: 1.1em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .btn.secondary {
             background: none;
-            border: 2px solid var(--text-light);
-            color: var(--text-light);
+            border: 2px solid var(--white);
+            color: var(--white);
             box-shadow: none;
         }
 
         .btn:hover {
-            background: #0056b3; /* Darker blue on hover */
+            background: var(--primary-blue);
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
         .btn.secondary:hover {
-            background: var(--text-light);
-            color: var(--primary-color);
+            background: var(--white);
+            color: var(--primary-blue);
             transform: translateY(-3px);
-            box-shadow: none;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
         }
 
         /* Section Styling */
         section {
-            padding: 60px 0;
-            background-color: #ffffff;
-            border-bottom: 1px solid #eee;
+            padding: 80px 0;
+            background-color: var(--white);
+            border-bottom: 1px solid #e0e0e0;
         }
 
-        section:nth-of-type(odd) {
-            background-color: var(--light-background);
+        section:nth-of-type(even) { /* Changed to even for alternating effect */
+            background-color: var(--light-grey);
         }
 
         section h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Oswald', sans-serif;
             text-align: center;
-            font-size: 2.8em;
-            color: var(--dark-accent);
+            font-size: 3.2em;
+            color: var(--dark-grey);
             margin-bottom: 40px;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         section h2::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 10px auto 0;
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-blue);
+            margin: 15px auto 0;
             border-radius: 5px;
         }
 
-        /* About Us / Services / Process - General Content Grid */
+        /* About Us / Process - General Content Grid */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 60px; /* Increased gap */
             align-items: center;
+            margin-top: 40px;
         }
         .content-grid .text-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
-            color: var(--dark-accent);
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2em;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .content-grid p {
+            font-size: 1.1em;
+            line-height: 1.8;
             margin-bottom: 15px;
         }
         .content-grid img {
@@ -254,46 +254,52 @@
             height: auto;
             display: block;
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Stronger shadow for professionalism */
         }
 
         /* Services Section */
         #services .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
         #services .service-card {
-            background-color: #fff;
-            border: 1px solid #ddd;
+            background-color: var(--white);
+            border: 1px solid #e0e0e0;
             border-radius: var(--border-radius);
             padding: 30px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Spacing for icon, title, text */
+            align-items: center;
         }
 
         #services .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
+        #services .service-card i {
+            font-size: 4em; /* Larger icons */
+            color: var(--primary-blue);
+            margin-bottom: 25px; /* Increased spacing */
+        }
         #services .service-card h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: 1.6em;
+            font-family: 'Oswald', sans-serif;
+            color: var(--dark-grey);
+            font-size: 1.8em;
             margin-bottom: 15px;
+            letter-spacing: 0.5px;
         }
         #services .service-card p {
             font-size: 1em;
-            color: var(--text-dark);
-        }
-        #services .service-card i {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
         /* Testimonials */
@@ -302,125 +308,176 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
+            margin-top: 40px;
         }
 
         #testimonials .testimonial-card {
-            background-color: #fff;
-            border-left: 5px solid var(--primary-color);
+            background-color: var(--white);
+            border-left: 6px solid var(--secondary-blue); /* Thicker border */
             border-radius: var(--border-radius);
             padding: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 480px; /* Slightly adjusted max-width */
             flex: 1 1 45%;
-            min-width: 300px;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         #testimonials .testimonial-card p {
             font-style: italic;
-            margin-bottom: 15px;
-            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-size: 1.15em;
+            line-height: 1.7;
+            color: var(--text-color);
         }
 
         #testimonials .testimonial-card .client-info {
-            font-weight: 600;
-            color: var(--dark-accent);
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1em;
+            text-align: right;
+            margin-top: auto; /* Pushes client info to the bottom */
         }
         .google-rating {
             text-align: center;
-            font-size: 1.2em;
-            color: var(--dark-accent);
+            font-size: 1.4em; /* Larger rating text */
+            color: var(--primary-blue);
             margin-bottom: 30px;
+            font-weight: 700;
         }
         .google-rating i {
             color: gold;
-            margin-right: 5px;
+            margin-right: 8px;
         }
 
         /* Contact Section */
-        #contact .contact-grid {
-            display: block;
+        #contact {
+            background-color: var(--primary-blue); /* Distinct background */
+            color: var(--white);
+            padding: 80px 0;
             text-align: center;
+        }
+        #contact h2 {
+            color: var(--white);
+        }
+        #contact h2::after {
+            background: var(--secondary-blue);
         }
 
         #contact .contact-details {
             max-width: 600px;
             margin: 0 auto;
-            padding: 30px;
-            background-color: #fff;
+            padding: 40px;
+            background-color: rgba(255,255,255,0.1); /* Subtle white background */
             border-radius: var(--border-radius);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            text-align: left; /* Align text within the box left */
         }
 
         #contact .contact-details p {
-            margin-bottom: 15px;
-            font-size: 1.1em;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            display: flex; /* For icon alignment */
+            align-items: center;
         }
 
         #contact .contact-details i {
-            color: var(--primary-color);
-            margin-right: 10px;
+            color: var(--secondary-blue);
+            margin-right: 15px;
+            font-size: 1.4em;
+            width: 25px; /* Fixed width for icon alignment */
+        }
+        #contact .contact-details a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        #contact .contact-details a:hover {
+            color: var(--secondary-blue);
+        }
+        #contact .contact-details .btn {
+            margin-top: 30px;
+            display: inline-block; /* To center button */
+            width: auto; /* Reset width from responsive styles */
+            padding: 18px 40px; /* Larger button */
+            font-size: 1.3em;
         }
 
         /* Footer */
         footer {
-            background: var(--dark-accent);
-            color: var(--text-light);
+            background: var(--dark-grey);
+            color: var(--white);
             text-align: center;
             padding: 40px 0;
             font-size: 0.9em;
         }
 
         footer .social-links a {
-            color: var(--text-light);
-            margin: 0 10px;
-            font-size: 1.5em;
+            color: var(--white);
+            margin: 0 12px;
+            font-size: 1.6em;
             transition: color var(--transition-speed);
         }
 
         footer .social-links a:hover {
-            color: #b0d8ff;
+            color: var(--secondary-blue);
         }
         footer p {
-            margin-top: 15px;
+            margin-top: 20px;
             margin-bottom: 0;
         }
         footer .footer-links {
-            margin-top: 10px;
+            margin-top: 15px;
         }
         footer .footer-links a {
-            color: var(--text-light);
+            color: var(--white);
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 12px;
             transition: color var(--transition-speed);
         }
         footer .footer-links a:hover {
-            color: #b0d8ff;
+            color: var(--secondary-blue);
         }
 
         /* Responsive Design */
         @media (max-width: 992px) {
             .content-grid {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .content-grid .text-content {
+                order: 2; /* Text below image on mobile for about section */
+            }
+            .content-grid img {
+                order: 1;
             }
             #hero h2 {
-                font-size: 2.5em;
+                font-size: 3em;
             }
             #hero p {
-                font-size: 1.1em;
+                font-size: 1.2em;
             }
             nav ul {
-                display: none;
+                display: none; /* Hide for smaller screens, implement hamburger menu if desired */
             }
             header .container {
                 flex-direction: column;
                 text-align: center;
             }
             .contact-info-header {
-                margin-top: 10px;
+                margin-top: 15px;
                 justify-content: center;
             }
             .logo {
                 margin-bottom: 10px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            section h2 {
+                font-size: 2.5em;
             }
         }
 
@@ -428,11 +485,21 @@
             .container {
                 width: 95%;
             }
-            section {
-                padding: 40px 0;
+            #hero {
+                min-height: 400px;
+                height: auto;
+                padding: 60px 0;
             }
-            section h2 {
+            #hero .hero-content {
+                padding: 0 15px;
+            }
+            #hero h2 {
                 font-size: 2.2em;
+                margin-bottom: 10px;
+            }
+            #hero p {
+                font-size: 1em;
+                margin-bottom: 30px;
             }
             .btn-group {
                 flex-direction: column;
@@ -442,29 +509,25 @@
                 width: 90%;
                 max-width: 300px;
                 margin: 0 auto;
+                padding: 12px 25px;
+                font-size: 1em;
             }
             #services .service-grid {
                 grid-template-columns: 1fr;
             }
             #testimonials .testimonial-card {
                 flex: 1 1 100%;
+                min-width: unset; /* Remove min-width */
             }
-
-            /* Adjust Hero for smaller screens */
-            #hero {
-                min-height: 70vh;
-                padding: 40px 0;
+            #contact .contact-details {
+                padding: 30px;
             }
-            #hero .image-overlay {
-                padding: 50px 15px;
+            #contact .contact-details p {
+                font-size: 1.1em;
             }
-            #hero h2 {
-                font-size: 2.2em;
-                margin-bottom: 15px;
-            }
-            #hero p {
-                font-size: 1em;
-                margin-bottom: 25px;
+            #contact .contact-details .btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
             }
         }
     </style>
@@ -491,14 +554,53 @@
     </header>
 
     <section id="hero">
-        <div class="hero-image-placeholder" style="background-image: url('image_9a2dd3.jpg');"></div>
-        <div class="image-overlay">
-            <div class="container">
-                <h2>Expert HVAC Solutions for Your Home & Business</h2>
-                <p>Providing reliable, high-quality heating, ventilation, and air conditioning services in Waddell, AZ and surrounding areas.</p>
-                <div class="btn-group">
-                    <a href="#services" class="btn">Our Services</a>
-                    <a href="#contact" class="btn secondary">Schedule Service</a>
+        <div class="hero-background"></div>
+        <div class="image-overlay"></div>
+        <div class="hero-content">
+            <h2>Your Comfort, Our Priority.</h2>
+            <p>Reliable HVAC Services in Waddell, AZ and Surrounding Communities.</p>
+            <div class="btn-group">
+                <a href="#services" class="btn">Explore Our Services</a>
+                <a href="#contact" class="btn secondary">Schedule Service Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Comprehensive HVAC Solutions</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: var(--dark-grey);">
+                From installation to maintenance, we ensure your home or business stays comfortable year-round.
+            </p>
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>AC Repair & Maintenance</h3>
+                    <p>Swift diagnostics and efficient repairs for all air conditioning systems. Keep your cooling running optimally with our routine maintenance plans.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Heating System Services</h3>
+                    <p>Expert repair, maintenance, and installation for furnaces, heat pumps, and all heating units, ensuring warmth during cooler months.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>New System Installation</h3>
+                    <p>Seamless installation of new, energy-efficient HVAC systems. We help you choose the perfect unit for your property's specific needs and budget.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-duct"></i> <h3>Ductwork & Ventilation</h3>
+                    <p>Inspection, repair, and installation of ductwork to ensure efficient airflow and optimal system performance throughout your space.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-filter"></i>
+                    <h3>Indoor Air Quality</h3>
+                    <p>Solutions including air purifiers, humidifiers, and UV lights to enhance the cleanliness and health of the air you breathe indoors.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Electrical Troubleshooting</h3>
+                    <p>Beyond HVAC, we offer skilled diagnosis and repair of related electrical issues, including circuit problems and general electrical fixes.</p>
                 </div>
             </div>
         </div>
@@ -508,50 +610,11 @@
         <div class="container">
             <h2>About Gabriel's Air Care</h2>
             <div class="content-grid">
+                <img src="YOUR_ABOUT_HVAC_TEAM_IMAGE_URL_HERE.jpg" alt="Professional HVAC technician at work">
                 <div class="text-content">
-                    <h3>Your Trusted Partner for HVAC Excellence</h3>
-                    <p>At Gabriel's Air Care, we are dedicated to providing top-tier HVAC services with a focus on reliability, efficiency, and customer satisfaction. Located in Waddell, AZ, we proudly serve our community with professional heating, ventilation, and air conditioning solutions. Our commitment to quality workmanship, transparent communication, and exceptional service ensures your indoor comfort is always our top priority.</p>
-                    <p>Gabriel brings years of experience and a passion for delivering precise, effective, and lasting HVAC repairs, installations, and maintenance. We believe in showing you the work being done, explaining every step, and providing pictures upon completion, so you always feel informed and confident in our service.</p>
-                </div>
-                <img src="YOUR_ABOUT_IMAGE_URL_HERE.jpg" alt="Gabriel working on HVAC unit or professional team">
-            </div>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <h2>Our Comprehensive HVAC Services</h2>
-            <p style="text-align: center; margin-bottom: 40px; font-size: 1.1em;">From routine maintenance to complex installations, we've got your climate control needs covered.</p>
-            <div class="service-grid">
-                <div class="service-card">
-                    <i class="fas fa-fan"></i>
-                    <h3>AC Repair & Maintenance</h3>
-                    <p>Fast and effective diagnostics and repairs for all AC makes and models. Regular maintenance to extend unit life and prevent breakdowns.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-snowflake"></i>
-                    <h3>New AC Installation</h3>
-                    <p>Professional installation of new, energy-efficient air conditioning systems tailored to your home's size and cooling needs.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-fire"></i>
-                    <h3>Heating System Services</h3>
-                    <p>Comprehensive repair, maintenance, and installation for furnaces, heat pumps, and other heating systems to keep you warm.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-wind"></i>
-                    <h3>Ductwork Repair & Installation</h3>
-                    <p>Expert assessment and repair of leaky or damaged ductwork, as well as new duct installation for optimal air delivery.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-leaf"></i>
-                    <h3>Indoor Air Quality</h3>
-                    <p>Solutions including air purifiers, humidifiers, and ventilation systems to improve the air quality inside your home or business.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tools"></i>
-                    <h3>Electrical Troubleshooting</h3>
-                    <p>Skilled diagnosis and repair of electrical issues related to HVAC systems, including lighting and switches. (As highlighted by Carmen Lopez)</p>
+                    <h3>Committed to Quality & Customer Satisfaction</h3>
+                    <p>Gabriel's Air Care is a locally-owned and operated HVAC service provider based in Waddell, AZ. Founded on principles of integrity, expertise, and transparent service, we strive to exceed expectations with every job. We understand the importance of a comfortable indoor environment, and our certified technicians are dedicated to delivering lasting solutions that optimize your system's performance and energy efficiency.</p>
+                    <p>We pride ourselves on clear communication, walking you through every step of the process and providing visual evidence of work completed. Our goal is to build long-term relationships with our clients based on trust and unparalleled service. When you choose Gabriel's Air Care, you're choosing peace of mind.</p>
                 </div>
             </div>
         </div>
@@ -559,8 +622,11 @@
 
     <section id="testimonials">
         <div class="container">
-            <h2>What Our Customers Say</h2>
-            <p class="google-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> **5.0 on Google!**</p>
+            <h2>Hear From Our Satisfied Clients</h2>
+            <p class="google-rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                Rated **5.0 on Google!**
+            </p>
             <div class="testimonial-slider">
                 <div class="testimonial-card">
                     <p>"I can’t say enough good things about my experience with Gabriel. He was on time, clean, organized, had the best communication out of any company I have ever used, and his work is next level quality. I will be recommending him to many people."</p>
@@ -580,15 +646,12 @@
 
     <section id="contact">
         <div class="container">
-            <h2>Get In Touch With Gabriel's Air Care</h2>
-            <div class="contact-grid">
-                <div class="contact-details">
-                    <p><i class="fas fa-map-marker-alt"></i> Serving Waddell, AZ and surrounding areas</p>
-                    <p><i class="fas fa-phone-alt"></i> Phone: <a href="tel:+14805191893">(480) 519-1893</a></p>
-                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@gabrielsaircare.com">info@gabrielsaircare.com</a></p>
-                    <p style="margin-top: 25px; font-weight: bold;">For reliable HVAC services, don't hesitate to call Gabriel's Air Care today!</p>
-                    <a href="tel:+14805191893" class="btn">Call Now For Service!</a>
-                </div>
+            <h2>Ready for Reliable HVAC Service?</h2>
+            <div class="contact-details">
+                <p><i class="fas fa-map-marker-alt"></i> Serving Waddell, AZ and all surrounding areas</p>
+                <p><i class="fas fa-phone-alt"></i> Call Us: <a href="tel:+14805191893">(480) 519-1893</a></p>
+                <p><i class="fas fa-envelope"></i> Email Us: <a href="mailto:info@gabrielsaircare.com">info@gabrielsaircare.com</a></p>
+                <a href="tel:+14805191893" class="btn">Get a Free Estimate!</a>
             </div>
         </div>
     </section>
@@ -597,7 +660,7 @@
         <div class="container">
             <div class="social-links">
                 <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                <a href="#" aria-label="Google Business Profile"><i class="fab fa-google"></i></a>
                 </div>
             <p>&copy; 2025 Gabriel's Air Care. All rights reserved.</p>
             <div class="footer-links">
@@ -611,13 +674,18 @@
         document.querySelectorAll('nav ul li a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
 
-                // Remove active class from all and add to clicked one
-                document.querySelectorAll('nav ul li a').forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Remove active class from all and add to clicked one
+                    document.querySelectorAll('nav ul li a').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                }
             });
         });
     </script>
