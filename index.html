@@ -42,8 +42,8 @@
             background-size: cover;
             background-position: center;
             width: 100%;
-            height: 256px; /* A fixed height for the background div, adjust as needed */
-            min-height: 200px; /* Minimum height for better visibility on smaller screens */
+            /* Removed fixed height and min-height for aspect-ratio */
+            aspect-ratio: 1 / 1; /* Makes the div a perfect square (width:height = 1:1) */
             border-radius: 0.75rem; /* Equivalent to rounded-xl */
             overflow: hidden; /* Equivalent to overflow-hidden */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-xl */
@@ -56,7 +56,6 @@
             transform: scale(1.05);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Equivalent to hover:shadow-2xl */
         }
-
 
         /* Mobile-specific About Us Image Background */
         @media (max-width: 767px) {
@@ -124,8 +123,8 @@
                     </p>
                 </div>
                 <div class="rounded-xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105">
-                    <!-- About Us image, now handled via CSS background-image for responsiveness -->
-                    <div class="about-us-image-bg w-full h-64 md:h-96"></div>
+                    <!-- About Us image, now handled via CSS background-image for responsiveness and square aspect ratio -->
+                    <div class="about-us-image-bg w-full"></div>
                 </div>
             </div>
         </div>
