@@ -41,14 +41,14 @@
         .about-us-image-bg {
             background-size: cover;
             background-position: center;
-            width: 100%;
-            /* Removed fixed height and min-height for aspect-ratio */
+            width: calc(100% * 2 / 7); /* New width: 2/7 of parent's width */
             aspect-ratio: 1 / 1; /* Makes the div a perfect square (width:height = 1:1) */
             border-radius: 0.75rem; /* Equivalent to rounded-xl */
             overflow: hidden; /* Equivalent to overflow-hidden */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-xl */
             transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Equivalent to transition-transform duration-500 hover:scale-105 hover:shadow-2xl */
             background-image: url('fella5.jpg'); /* PC About Us Image */
+            margin: 0 auto; /* Center the square image within its column */
         }
 
         /* Hover effects for About Us Image */
@@ -124,7 +124,7 @@
                 </div>
                 <div class="rounded-xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105">
                     <!-- About Us image, now handled via CSS background-image for responsiveness and square aspect ratio -->
-                    <div class="about-us-image-bg w-full"></div>
+                    <div class="about-us-image-bg"></div>
                 </div>
             </div>
         </div>
@@ -207,7 +207,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.205l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
                         </div>
                     </div>
                 </div>
