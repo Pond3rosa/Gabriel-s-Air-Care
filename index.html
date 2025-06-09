@@ -17,22 +17,51 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Ensure the hero background image covers the whole page */
+
+        /* Hero Section Background - Default (PC) */
         #home .bg-cover {
-            background-size: cover; /* Ensures the image covers the entire background area */
-            background-position: center; /* Centers the image */
+            background-size: cover;
+            background-position: center;
             width: 100%;
             height: 100%;
-            position: absolute; /* Ensures it stretches relative to its parent */
+            position: absolute;
             top: 0;
             left: 0;
-            background-image: url('fella1.jpg'); /* Default for larger screens */
+            background-image: url('fella1.jpg'); /* PC Hero Image */
         }
 
-        /* Mobile-specific background image for Hero Section (now fella2.jpg) */
+        /* Mobile-specific Hero Section Background */
         @media (max-width: 767px) { /* Applies to screens smaller than 768px (Tailwind's md breakpoint) */
             #home .bg-cover {
-                background-image: url('fella2.jpg') !important; /* Override with mobile-specific image */
+                background-image: url('fella5.jpg') !important; /* Mobile Hero Image */
+            }
+        }
+
+        /* About Us Image Background - Default (PC) */
+        .about-us-image-bg {
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 256px; /* A fixed height for the background div, adjust as needed */
+            min-height: 200px; /* Minimum height for better visibility on smaller screens */
+            border-radius: 0.75rem; /* Equivalent to rounded-xl */
+            overflow: hidden; /* Equivalent to overflow-hidden */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-xl */
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out; /* Equivalent to transition-transform duration-500 hover:scale-105 hover:shadow-2xl */
+            background-image: url('fella5.jpg'); /* PC About Us Image */
+        }
+
+        /* Hover effects for About Us Image */
+        .about-us-image-bg:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* Equivalent to hover:shadow-2xl */
+        }
+
+
+        /* Mobile-specific About Us Image Background */
+        @media (max-width: 767px) {
+            .about-us-image-bg {
+                background-image: url('fella2.jpg') !important; /* Mobile About Us Image */
             }
         }
     </style>
@@ -60,7 +89,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative bg-gradient-to-r from-blue-700 to-blue-900 text-white flex items-center justify-center h-screen pt-20">
-        <!-- Background image for the hero section, now dynamically set via CSS for mobile -->
+        <!-- Background image for the hero section, now dynamically set via CSS for mobile/PC -->
         <div class="absolute inset-0 bg-cover bg-center opacity-30"></div>
         <div class="relative z-10 text-center p-8 max-w-4xl mx-auto">
             <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight mb-6">
@@ -95,8 +124,8 @@
                     </p>
                 </div>
                 <div class="rounded-xl overflow-hidden shadow-xl transform transition-transform duration-500 hover:scale-105">
-                    <!-- About Us image, now using 'fella3.jpg' -->
-                    <img src="fella3.jpg" alt="About Us - Gabriel's Air Care" class="w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/CCCCCC/333333?text=About+Us+Image';">
+                    <!-- About Us image, now handled via CSS background-image for responsiveness -->
+                    <div class="about-us-image-bg w-full h-64 md:h-96"></div>
                 </div>
             </div>
         </div>
@@ -112,9 +141,6 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service Card 1: Air Conditioning Repair -->
                 <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl border border-blue-100">
-                    <div class="text-5xl text-blue-600 mb-6">
-                        <!-- Removed Font Awesome icon as per previous instructions, will use a placeholder or simpler styling if needed -->
-                    </div>
                     <h3 class="text-2xl font-semibold text-blue-700 mb-4">Air Conditioning Repair</h3>
                     <p class="text-gray-600">
                         Fast and reliable repair services for all AC makes and models. We diagnose and fix issues quickly to restore your comfort.
@@ -123,9 +149,6 @@
 
                 <!-- Service Card 2: New AC System Installation -->
                 <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl border border-blue-100">
-                    <div class="text-5xl text-blue-600 mb-6">
-                        <!-- Removed Font Awesome icon as per previous instructions -->
-                    </div>
                     <h3 class="text-2xl font-semibold text-blue-700 mb-4">New AC System Installation</h3>
                     <p class="text-gray-600">
                         Professional installation of new, energy-efficient AC systems tailored to your home's unique requirements.
@@ -134,9 +157,6 @@
 
                 <!-- Service Card 3: HVAC Maintenance -->
                 <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl border border-blue-100">
-                    <div class="text-5xl text-blue-600 mb-6">
-                        <!-- Removed Font Awesome icon as per previous instructions -->
-                    </div>
                     <h3 class="text-2xl font-semibold text-blue-700 mb-4">HVAC Maintenance</h3>
                     <p class="text-gray-600">
                         Regular tune-ups and preventative maintenance to extend your system's lifespan and improve efficiency.
@@ -145,9 +165,6 @@
 
                 <!-- Service Card 4: Heating System Repair -->
                 <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl border border-blue-100">
-                    <div class="text-5xl text-blue-600 mb-6">
-                        <!-- Removed Font Awesome icon as per previous instructions -->
-                    </div>
                     <h3 class="text-2xl font-semibold text-blue-700 mb-4">Heating System Repair</h3>
                     <p class="text-gray-600">
                         Expert diagnosis and repair for all types of heating systems, ensuring warmth and comfort during colder months.
@@ -156,9 +173,6 @@
 
                 <!-- Service Card 5: Thermostat Services -->
                 <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl border border-blue-100">
-                    <div class="text-5xl text-blue-600 mb-6">
-                        <!-- Removed Font Awesome icon as per previous instructions -->
-                    </div>
                     <h3 class="text-2xl font-semibold text-blue-700 mb-4">Thermostat Services</h3>
                     <p class="text-gray-600">
                         Installation, repair, and programming of smart and traditional thermostats for optimal temperature control.
@@ -167,9 +181,6 @@
 
                 <!-- Service Card 6: Indoor Air Quality -->
                 <div class="bg-white rounded-xl shadow-lg p-8 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 hover:shadow-2xl border border-blue-100">
-                    <div class="text-5xl text-blue-600 mb-6">
-                        <!-- Removed Font Awesome icon as per previous instructions -->
-                    </div>
                     <h3 class="text-2xl font-semibold text-blue-700 mb-4">Indoor Air Quality</h3>
                     <p class="text-gray-600">
                         Solutions like air purifiers and humidifiers to improve the health and freshness of your indoor air.
@@ -208,23 +219,6 @@
                     </p>
                     <div class="flex items-center justify-between mt-auto">
                         <p class="font-semibold text-blue-200">Omar M</p>
-                        <div class="flex text-yellow-400">
-                            <!-- 5 Stars -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial 3 (Jazmin Fernandez) -->
-                <div class="bg-blue-700 rounded-xl shadow-lg p-8 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
-                    <p class="text-lg italic mb-6">
-                        "I was thoroughly impressed with the exceptional service provided by Gabriel’s Air Care. They efficiently addressed my air conditioning needs, and I highly recommend their expertise to anyone in the area seeking A/C issues."
-                    </p>
-                    <div class="flex items-center justify-between mt-auto">
-                        <p class="font-semibold text-blue-200">Jazmin Fernandez</p>
                         <div class="flex text-yellow-400">
                             <!-- 5 Stars -->
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.446c1.164.095 1.637 1.547.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.888-.758-.415-2.21.749-2.305l5.404-.446 2.082-5.007z" clip-rule="evenodd" /></svg>
