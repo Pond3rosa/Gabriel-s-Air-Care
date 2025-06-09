@@ -1,532 +1,953 @@
-<style>
-    :root {
-        --primary-blue: #1A5276;      /* Deep Steel Blue - primary accent */
-        --secondary-blue: #5DADE2;    /* Lighter, brighter blue for highlights */
-        --dark-grey: #34495E;         /* Dark Slate Grey - for text, headers */
-        --light-grey: #ECF0F1;        /* Very Light Grey - for section backgrounds */
-        --white: #ffffff;
-        --text-color: #333333;
-        --border-radius: 6px;
-        --transition-speed: 0.3s;
-    }
-
-    body {
-        font-family: 'Roboto', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: var(--light-grey);
-        color: var(--text-color);
-        line-height: 1.6;
-        scroll-behavior: smooth;
-    }
-
-    .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: auto;
-        padding: 20px 0;
-    }
-
-    /* Header & Navigation */
-    header {
-        background: var(--dark-grey);
-        color: var(--white);
-        padding: 15px 0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-
-    header .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo h1 {
-        margin: 0;
-        font-family: 'Oswald', sans-serif;
-        font-size: 2.5em;
-        color: var(--white);
-        letter-spacing: 1px;
-    }
-
-    nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-
-    nav ul li {
-        margin-left: 30px;
-    }
-
-    nav ul li a {
-        color: var(--white);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 8px 0;
-        transition: color var(--transition-speed), border-bottom var(--transition-speed);
-    }
-
-    nav ul li a:hover, nav ul li a.active {
-        color: var(--secondary-blue);
-        border-bottom: 2px solid var(--secondary-blue);
-    }
-
-    .contact-info-header {
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-    }
-    .contact-info-header a {
-        color: var(--white);
-        text-decoration: none;
-        margin-left: 20px;
-        transition: color var(--transition-speed);
-    }
-    .contact-info-header a:hover {
-        color: var(--secondary-blue);
-    }
-
-    /* Hero Section */
-    #hero {
-        position: relative;
-        height: 70vh; /* Adjust for more prominent hero */
-        min-height: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: var(--white);
-        overflow: hidden;
-    }
-
-    #hero .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('guy1.jpg'); /* Referenced as guy1.jpg */
-        background-size: cover;
-        background-position: center;
-        filter: brightness(0.6) blur(2px); /* Darken and blur slightly */
-        transform: scale(1.02); /* Slight scale to hide blur edges */
-        z-index: 1;
-    }
-
-    #hero .image-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(26, 82, 118, 0.75); /* Primary Blue with transparency */
-        z-index: 2;
-    }
-
-    #hero .hero-content {
-        position: relative;
-        z-index: 3;
-        max-width: 900px;
-        padding: 0 20px;
-    }
-
-    #hero h2 {
-        font-family: 'Oswald', sans-serif;
-        font-size: 4em;
-        margin-bottom: 15px;
-        line-height: 1.1;
-        text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-        letter-spacing: 0.5px;
-    }
-
-    #hero p {
-        font-size: 1.5em;
-        margin-bottom: 40px;
-        font-weight: 300;
-    }
-
-    .btn-group {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-    }
-
-    .btn {
-        background: var(--secondary-blue);
-        color: var(--white);
-        padding: 15px 30px;
-        text-decoration: none;
-        border-radius: var(--border-radius);
-        font-weight: 700;
-        transition: background var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
-        border: none;
-        cursor: pointer;
-        font-size: 1.1em;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .btn.secondary {
-        background: none;
-        border: 2px solid var(--white);
-        color: var(--white);
-        box-shadow: none;
-    }
-
-    .btn:hover {
-        background: var(--primary-blue);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-    .btn.secondary:hover {
-        background: var(--white);
-        color: var(--primary-blue);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    }
-
-    /* Section Styling */
-    section {
-        padding: 80px 0;
-        background-color: var(--white);
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    section:nth-of-type(even) { /* Changed to even for alternating effect */
-        background-color: var(--light-grey);
-    }
-
-    section h2 {
-        font-family: 'Oswald', sans-serif;
-        text-align: center;
-        font-size: 3.2em;
-        color: var(--dark-grey);
-        margin-bottom: 40px;
-        position: relative;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    section h2::after {
-        content: '';
-        display: block;
-        width: 100px;
-        height: 4px;
-        background: var(--secondary-blue);
-        margin: 15px auto 0;
-        border-radius: 5px;
-    }
-
-    /* About Us / Process - General Content Grid */
-    .content-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px; /* Increased gap */
-        align-items: center;
-        margin-top: 40px;
-    }
-    .content-grid .text-content h3 {
-        font-family: 'Oswald', sans-serif;
-        font-size: 2.2em;
-        color: var(--primary-blue);
-        margin-bottom: 20px;
-        letter-spacing: 0.5px;
-    }
-    .content-grid p {
-        font-size: 1.1em;
-        line-height: 1.8;
-        margin-bottom: 15px;
-    }
-    .content-grid img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: var(--border-radius);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Stronger shadow for professionalism */
-    }
-
-    /* Services Section */
-    #services .service-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    #services .service-card {
-        background-color: var(--white);
-        border: 1px solid #e0e0e0;
-        border-radius: var(--border-radius);
-        padding: 30px;
-        text-align: center;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Spacing for icon, title, text */
-        align-items: center;
-    }
-
-    #services .service-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    #services .service-card i {
-        font-size: 4em; /* Larger icons */
-        color: var(--primary-blue);
-        margin-bottom: 25px; /* Increased spacing */
-    }
-    #services .service-card h3 {
-        font-family: 'Oswald', sans-serif;
-        color: var(--dark-grey);
-        font-size: 1.8em;
-        margin-bottom: 15px;
-        letter-spacing: 0.5px;
-    }
-    #services .service-card p {
-        font-size: 1em;
-        color: var(--text-color);
-        line-height: 1.6;
-    }
-
-    /* Testimonials */
-    #testimonials .testimonial-slider {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 40px;
-    }
-
-    #testimonials .testimonial-card {
-        background-color: var(--white);
-        border-left: 6px solid var(--secondary-blue); /* Thicker border */
-        border-radius: var(--border-radius);
-        padding: 30px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        max-width: 480px; /* Slightly adjusted max-width */
-        flex: 1 1 45%;
-        min-width: 320px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    #testimonials .testimonial-card p {
-        font-style: italic;
-        margin-bottom: 20px;
-        font-size: 1.15em;
-        line-height: 1.7;
-        color: var(--text-color);
-    }
-
-    #testimonials .testimonial-card .client-info {
-        font-weight: 700;
-        color: var(--primary-blue);
-        font-size: 1em;
-        text-align: right;
-        margin-top: auto; /* Pushes client info to the bottom */
-    }
-    .google-rating {
-        text-align: center;
-        font-size: 1.4em; /* Larger rating text */
-        color: var(--primary-blue);
-        margin-bottom: 30px;
-        font-weight: 700;
-    }
-    .google-rating i {
-        color: gold;
-        margin-right: 8px;
-    }
-
-    /* Contact Section */
-    #contact {
-        background-color: var(--primary-blue); /* Distinct background */
-        color: var(--white);
-        padding: 80px 0;
-        text-align: center;
-    }
-    #contact h2 {
-        color: var(--white);
-    }
-    #contact h2::after {
-        background: var(--secondary-blue);
-    }
-
-    #contact .contact-details {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 40px;
-        background-color: rgba(255,255,255,0.1); /* Subtle white background */
-        border-radius: var(--border-radius);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        text-align: left; /* Align text within the box left */
-    }
-
-    #contact .contact-details p {
-        margin-bottom: 20px;
-        font-size: 1.2em;
-        display: flex; /* For icon alignment */
-        align-items: center;
-    }
-
-    #contact .contact-details i {
-        color: var(--secondary-blue);
-        margin-right: 15px;
-        font-size: 1.4em;
-        width: 25px; /* Fixed width for icon alignment */
-    }
-    #contact .contact-details a {
-        color: var(--white);
-        text-decoration: none;
-        transition: color var(--transition-speed);
-    }
-    #contact .contact-details a:hover {
-        color: var(--secondary-blue);
-    }
-    #contact .contact-details .btn {
-        margin-top: 30px;
-        display: inline-block; /* To center button */
-        width: auto; /* Reset width from responsive styles */
-        padding: 18px 40px; /* Larger button */
-        font-size: 1.3em;
-    }
-
-    /* Footer */
-    footer {
-        background: var(--dark-grey);
-        color: var(--white);
-        text-align: center;
-        padding: 40px 0;
-        font-size: 0.9em;
-    }
-
-    footer .social-links a {
-        color: var(--white);
-        margin: 0 12px;
-        font-size: 1.6em;
-        transition: color var(--transition-speed);
-    }
-
-    footer .social-links a:hover {
-        color: var(--secondary-blue);
-    }
-    footer p {
-        margin-top: 20px;
-        margin-bottom: 0;
-    }
-    footer .footer-links {
-        margin-top: 15px;
-    }
-    footer .footer-links a {
-        color: var(--white);
-        text-decoration: none;
-        margin: 0 12px;
-        transition: color var(--transition-speed);
-    }
-    footer .footer-links a:hover {
-        color: var(--secondary-blue);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-        .content-grid {
-            grid-template-columns: 1fr;
-            gap: 30px;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel's Air Care - Premier HVAC & Electrical Services in Waddell, AZ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0056b3;
+            --secondary-blue: #007bff;
+            --accent-yellow: #ffc107;
+            --dark-text: #343a40;
+            --light-text: #ffffff;
+            --light-bg: #f8f9fa;
+            --white-bg: #ffffff;
+            --border-light: #e9ecef;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --transition-speed: 0.3s;
         }
-        .content-grid .text-content {
-            order: 2; /* Text below image on mobile for about section */
+
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background: var(--light-bg);
+            color: var(--dark-text);
         }
-        .content-grid img {
-            order: 1;
-        }
-        #hero h2 {
-            font-size: 3em;
-        }
-        #hero p {
-            font-size: 1.2em;
-        }
-        nav ul {
-            display: none; /* Hide for smaller screens, implement hamburger menu if desired */
-        }
-        header .container {
-            flex-direction: column;
+
+        /* --- Header & Navigation --- */
+        header {
+            background: var(--primary-blue);
+            color: var(--light-text);
+            padding: 1.5rem 0;
             text-align: center;
+            box-shadow: 0 4px 15px var(--shadow-medium);
+            position: sticky; /* Make header sticky */
+            top: 0;
+            z-index: 1000; /* Ensure it stays on top */
         }
-        .contact-info-header {
-            margin-top: 15px;
-            justify-content: center;
+        .header-content {
+            width: 88%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .logo {
-            margin-bottom: 10px;
-        }
-        section {
-            padding: 60px 0;
-        }
-        section h2 {
-            font-size: 2.5em;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .container {
-            width: 95%;
-        }
-        #hero {
-            min-height: 400px;
-            height: auto;
-            padding: 60px 0;
-        }
-        #hero .hero-content {
-            padding: 0 15px;
-        }
-        #hero h2 {
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.2em;
-            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--light-text);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color var(--transition-speed);
         }
-        #hero p {
-            font-size: 1em;
-            margin-bottom: 30px;
+        .logo:hover {
+            color: var(--accent-yellow);
         }
-        .btn-group {
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: color var(--transition-speed);
+            position: relative;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-yellow);
+            bottom: -5px;
+            left: 0;
+            transition: width var(--transition-speed);
+        }
+        nav ul li a:hover {
+            color: var(--accent-yellow);
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            /* Using a placeholder for background image. Replace with actual path. */
+            background: linear-gradient(rgba(0, 86, 179, 0.85), rgba(0, 50, 100, 0.85)), url('https://via.placeholder.com/1920x800/003d80/ffffff?text=Professional+HVAC+Background') no-repeat center center/cover;
+            color: var(--light-text);
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 550px; /* Increased height for impact */
+            display: flex;
             flex-direction: column;
-            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 -8px 20px rgba(0,0,0,0.2);
         }
-        .btn {
-            width: 90%;
-            max-width: 300px;
-            margin: 0 auto;
-            padding: 12px 25px;
-            font-size: 1em;
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.2em; /* Slightly larger */
+            margin-bottom: 25px;
+            font-weight: 800;
+            line-height: 1.1;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            max-width: 900px;
         }
-        #services .service-grid {
-            grid-template-columns: 1fr;
+        .hero p {
+            font-size: 1.6em; /* Slightly larger */
+            margin-bottom: 45px;
+            max-width: 850px;
+            font-weight: 400;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
         }
-        #testimonials .testimonial-card {
-            flex: 1 1 100%;
-            min-width: unset; /* Remove min-width */
+        .hero .cta-button {
+            background: var(--accent-yellow);
+            color: var(--dark-text);
+            padding: 22px 50px; /* Larger padding */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.6em; /* Larger text */
+            transition: background var(--transition-speed), transform var(--transition-speed);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); /* Stronger shadow */
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
         }
-        #contact .contact-details {
-            padding: 30px;
-            display: flex; /* Enable flexbox */
-            flex-direction: column; /* Stack items vertically */
-            align-items: center; /* Center items horizontally */
+        .hero .cta-button:hover {
+            background: #e0a800;
+            transform: translateY(-7px); /* More pronounced hover */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.45);
         }
-        #contact .contact-details p {
+
+        /* --- Main Content Container --- */
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        /* --- Section Styling --- */
+        section {
+            background: var(--white-bg);
+            padding: 50px;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-blue);
+            font-size: 2.8em;
+            margin-bottom: 35px;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--secondary-blue);
+            border-radius: 2px;
+        }
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary-blue);
+            font-size: 2em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .text-content {
+            flex: 2;
+            min-width: 320px;
+            padding-right: 30px;
+        }
+        .image-placeholder {
+            flex: 1;
+            min-width: 280px;
+            height: 350px;
+            background: var(--border-light);
+            border: 2px dashed #aebcc7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6c757d;
+            font-size: 1.3em;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .image-placeholder span {
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .image-placeholder.right {
+            order: 2;
+            margin-left: 30px;
+            margin-right: 0;
+        }
+        .image-placeholder.left {
+            order: 1;
+            margin-right: 30px;
+            margin-left: 0;
+        }
+        .text-content.full-width {
+            width: 100%;
+            padding-right: 0;
+            /* Added for centering content within full-width text blocks where applicable */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers children like p, table, etc. */
+            text-align: center; /* Centers text within children */
+        }
+        .text-content.full-width p {
+            max-width: 800px; /* Limit paragraph width for better readability when centered */
+        }
+        /* Specific override for lists in full-width text content */
+        .text-content.full-width ul {
+            text-align: left; /* Keep lists left-aligned for readability */
+            width: 100%; /* Ensure lists take full width to align themselves */
+            max-width: 600px; /* Optional: limit list width if desired */
+            margin: 15px auto; /* Center the list block */
+        }
+        .text-content.full-width .testimonial {
+            text-align: left; /* Keep testimonials left-aligned */
+            width: 100%;
+            max-width: 700px; /* Limit testimonial width */
+        }
+        .text-content.full-width .faq-item {
+            text-align: left; /* Keep FAQ items left-aligned */
+            width: 100%;
+            max-width: 700px; /* Limit FAQ width */
+        }
+
+
+        /* --- Service Specific Layout --- */
+        .service-subsection {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            margin-top: 25px;
+        }
+        .service-subsection .text-content {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 20px;
+            padding-left: 0; /* Reset */
+            text-align: left; /* Ensure text is left-aligned in two-column layouts */
+            align-items: flex-start; /* Reset align-items */
+        }
+        .service-subsection .image-placeholder {
+            flex: 1;
+            min-width: 250px;
+            margin-left: 20px;
+            margin-right: 0; /* Reset */
+        }
+        .service-subsection.reversed .image-placeholder {
+            order: 1;
+            margin-right: 20px;
+            margin-left: 0; /* Reset */
+        }
+        .service-subsection.reversed .text-content {
+            order: 2;
+            padding-left: 20px;
+            padding-right: 0; /* Reset */
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+        ul li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--secondary-blue);
+            font-size: 1.2em;
+        }
+
+        /* --- Contact Info / Business Hours --- */
+        #contact-info .text-content p {
             font-size: 1.1em;
-            margin-bottom: 15px; /* Add some space below the phone number */
-            text-align: center; /* Center the phone number text */
+            margin-bottom: 12px;
         }
-        #contact .contact-details .btn {
-            padding: 15px 30px;
+        #contact-info .text-content a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        #contact-info .text-content a:hover {
+            color: var(--secondary-blue);
+            text-decoration: underline;
+        }
+        #contact-info .text-content i {
+            margin-right: 12px;
+            color: var(--secondary-blue);
+            font-size: 1.15em;
+        }
+
+        /* --- Business Hours Table - IMPROVED --- */
+        /* .business-hours .text-content.full-width is already handling general centering for this section */
+        .business-hours .table-container {
+            width: 100%;
+            max-width: 500px; /* Control table width */
+            margin: 30px auto; /* Center the table and add more vertical space */
+            border-radius: 12px; /* Slightly more rounded corners */
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+            border: none; /* No outer border, let shadow define it */
+        }
+        .business-hours table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white-bg);
+        }
+        .business-hours th, .business-hours td {
+            padding: 18px 25px; /* More padding */
+            text-align: left;
             font-size: 1.1em;
-            width: auto; /* Adjust width to content */
-            max-width: 300px; /* Limit maximum width if needed */
+            border-bottom: 1px solid #f0f4f7; /* Very light row separator */
         }
-    }
-</style>
+        .business-hours th {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25em; /* Larger header text */
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .business-hours tr:last-child td {
+            border-bottom: none; /* No border on last row */
+        }
+        .business-hours tbody tr:nth-child(odd) {
+            background-color: #fcfdff; /* Even lighter banding for odd rows */
+        }
+        .business-hours tbody tr:nth-child(even) {
+            background-color: #f6f9fc; /* Subtle banding for even rows */
+        }
+        .business-hours tbody tr:hover {
+            background-color: #eaf2fa; /* Hover effect */
+            transition: background-color var(--transition-speed) ease;
+        }
+        .business-hours td:last-child {
+            font-weight: 700; /* Make hours stand out even more */
+            color: var(--dark-text);
+        }
+        .business-hours td.closed {
+            color: #dc3545; /* Red for closed */
+            font-weight: 700; /* Bold for closed */
+        }
+        /* End Business Hours Table Improvement */
+
+        /* --- Testimonials --- */
+        .testimonials .testimonial {
+            background: #fcfdff;
+            border-left: 6px solid var(--primary-blue);
+            padding: 25px 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease;
+        }
+        .testimonials .testimonial:hover {
+            transform: translateX(5px);
+        }
+        .testimonials .testimonial p {
+            font-style: italic;
+            margin-bottom: 18px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        .testimonials .testimonial .author {
+            font-weight: 600;
+            text-align: right;
+            display: block;
+            font-size: 1.15em;
+            color: var(--primary-blue);
+        }
+        .testimonials .stars {
+            color: var(--accent-yellow);
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-item {
+            background: #fdfdff;
+            border: 1px solid #e0e7ee;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 18px 25px;
+            background: #eaf2fa;
+            color: var(--primary-blue);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;
+            transition: background var(--transition-speed);
+        }
+        .faq-question:hover {
+            background: #dce7f3;
+        }
+        .faq-question .icon {
+            font-size: 1.2em;
+            transition: transform var(--transition-speed);
+        }
+        .faq-question.active .icon {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            background: var(--white-bg);
+        }
+        .faq-answer.open {
+            max-height: 300px; /* Adjust based on content */
+            padding: 15px 25px;
+            border-top: 1px solid #eee;
+        }
+        .faq-answer p {
+            margin: 0;
+            color: #495057;
+        }
+
+        /* --- Final Call to Action Section --- */
+        .final-cta-section {
+            background: linear-gradient(45deg, var(--secondary-blue), var(--primary-blue));
+            color: var(--light-text);
+            text-align: center;
+            padding: 70px 20px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        .final-cta-section h2 {
+            color: var(--light-text);
+            margin-bottom: 25px;
+        }
+        .final-cta-section h2::after {
+            background-color: var(--light-text);
+        }
+        .final-cta-section p {
+            font-size: 1.4em;
+            margin-bottom: 35px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        .final-cta-section .cta-button {
+            background: var(--accent-yellow);
+            color: var(--dark-text);
+            padding: 20px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5em;
+            transition: background var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .final-cta-section .cta-button:hover {
+            background: #e0a800;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            background: #004085;
+            color: #e0e0e0;
+            font-size: 0.95em;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 10px 15px;
+            }
+
+            .hero {
+                padding: 80px 20px;
+                min-height: 450px;
+            }
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.4em;
+            }
+            .hero .cta-button {
+                font-size: 1.3em;
+                padding: 15px 35px;
+            }
+
+            .container {
+                width: 92%;
+            }
+            h2 {
+                font-size: 2.2em;
+            }
+            h3 {
+                font-size: 1.8em;
+            }
+            section {
+                flex-direction: column;
+                padding: 30px;
+            }
+            /* Reset specific text-content alignment for smaller screens if they become single column */
+            .text-content {
+                padding-right: 0;
+                width: 100%;
+                text-align: center; /* Center text content in single column sections */
+                align-items: center; /* Center flex items in single column sections */
+            }
+            .text-content ul,
+            .text-content .testimonial,
+            .text-content .faq-item {
+                text-align: left; /* Keep these specific items left-aligned */
+                width: 100%;
+                max-width: 100%; /* Allow to take full available width */
+                margin-left: 0; /* Reset margins */
+                margin-right: 0; /* Reset margins */
+            }
+
+            .image-placeholder {
+                margin: 25px 0 0 0 !important;
+                width: 100%;
+                order: unset !important; /* Reset order for smaller screens */
+                height: 280px;
+            }
+            .service-subsection .text-content,
+            .service-subsection .image-placeholder {
+                padding: 0 !important;
+                margin: 15px 0 0 0 !important;
+            }
+            .business-hours .table-container {
+                max-width: 100%; /* Allow table to expand */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .hero .cta-button {
+                font-size: 1.1em;
+                padding: 12px 25px;
+            }
+            h2 {
+                font-size: 2em;
+                margin-bottom: 25px;
+            }
+            h3 {
+                font-size: 1.6em;
+            }
+            section {
+                padding: 25px;
+                margin-bottom: 25px;
+            }
+            .testimonials .testimonial p,
+            .faq-question,
+            .business-hours th, .business-hours td {
+                font-size: 1em;
+            }
+            .final-cta-section p {
+                font-size: 1.2em;
+            }
+            .final-cta-section .cta-button {
+                font-size: 1.2em;
+                padding: 15px 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.8em;
+            }
+            nav ul li {
+                margin: 8px 10px;
+            }
+            .hero {
+                padding: 60px 15px;
+                min-height: 380px;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .image-placeholder {
+                height: 200px;
+                font-size: 1em;
+            }
+            .faq-question {
+                padding: 15px 20px;
+            }
+            .faq-answer.open {
+                padding: 10px 20px;
+            }
+            .business-hours th, .business-hours td {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="#hero" class="logo">Gabriel's Air Care</a>
+            <nav>
+                <ul>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact-info">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <h1>Exceptional HVAC & Electrical Services for Your Comfort</h1>
+        <p>Reliable Solutions Keeping Your Home & Business Safe, Efficient, and Perfectly Climate-Controlled in Waddell, AZ.</p>
+        <a href="#contact-info" class="cta-button"><i class="fas fa-phone-alt"></i> Schedule Service Today</a>
+    </section>
+
+    <main class="container">
+        <section id="about-us">
+            <div class="text-content">
+                <h2>About Gabriel's Air Care</h2>
+                <p>Welcome to Gabriel's Air Care, where your comfort and safety are our top priorities. Based in Waddell, AZ, we are a leading provider of comprehensive HVAC and electrical services, dedicated to delivering superior solutions for both residential and commercial clients across the region. With a deep commitment to quality, integrity, and unparalleled customer service, we've built a reputation as the trusted choice for reliable home and business systems.</p>
+                <p>Our journey began with a simple mission: to offer expert craftsmanship and genuine care in every project we undertake. We understand that your HVAC and electrical systems are vital to your daily comfort and operations, which is why we employ only highly trained, certified, and experienced technicians who are passionate about their trade. We stay abreast of the latest industry advancements and technologies to ensure you receive the most efficient and effective solutions available.</p>
+            </div>
+            <div class="image-placeholder right">
+                <span>[Image 1: Team Photo or Service Vehicle]</span>
+                </div>
+        </section>
+
+        <section id="why-choose-us">
+            <div class="text-content full-width">
+                <h2>Why Choose Gabriel's Air Care?</h2>
+                <p>Choosing the right service provider can make all the difference. At Gabriel's Air Care, we distinguish ourselves through a core set of values and practices:</p>
+                <ul>
+                    <li><i class="fa-solid fa-check-circle"></i> <strong>Expertise & Experience:</strong> Our technicians are highly trained, certified, and possess extensive experience in all facets of HVAC and electrical systems. We handle complex challenges with confidence and precision.</li>
+                    <li><i class="fa-solid fa-handshake-alt"></i> <strong>Reliability & Trust:</strong> We pride ourselves on being punctual, transparent, and honest. You can expect clear communication, accurate diagnoses, and fair pricing without hidden fees.</li>
+                    <li><i class="fa-solid fa-tools"></i> <strong>Quality Workmanship:</strong> We adhere to the highest industry standards, using only premium parts and proven techniques to ensure lasting repairs and installations that perform optimally.</li>
+                    <li><i class="fa-solid fa-user-friends"></i> <strong>Customer-Centric Approach:</b> Your satisfaction is our ultimate goal. We listen to your needs, explain our recommendations thoroughly, and ensure you're fully informed every step of the way.</li>
+                    <li><i class="fa-solid fa-shield-alt"></i> <strong>Safety First:</strong> All our services are performed with strict adherence to safety protocols, protecting your property and loved ones.</li>
+                </ul>
+                <p>We are not just service providers; we are your partners in maintaining a comfortable, safe, and efficient environment.</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="image-placeholder left">
+                <span>[Image 2: HVAC & Electrical work in progress or combined tools]</span>
+                </div>
+            <div class="text-content">
+                <h2>Our Comprehensive Services</h2>
+                <p>Gabriel's Air Care offers a full spectrum of HVAC and electrical solutions tailored to meet the diverse needs of our clients. Whether it's a scorching Arizona summer or a chilly winter evening, we ensure your systems are running flawlessly.</p>
+
+                <h3><i class="fa-solid fa-fan"></i> HVAC Services</h3>
+                <ul>
+                    <li><i class="fas fa-snowflake"></i> <strong>Air Conditioning:</strong> Installation, replacement, repair, and precision diagnostics for all AC makes and models.</li>
+                    <li><i class="fas fa-fire"></i> <strong>Heating Systems:</strong> Comprehensive service for furnaces, heat pumps, and other heating solutions.</li>
+                    <li><i class="fas fa-wrench"></i> <strong>Preventative Maintenance:</strong> Tailored plans for annual tune-ups to extend system life and optimize performance.</li>
+                    <li><i class="fas fa-wind"></i> <strong>Ductwork:</strong> Inspection, sealing, and repair for efficient airflow and improved system longevity.</li>
+                    <li><i class="fas fa-lungs"></i> <strong>Indoor Air Quality:</strong> Solutions like air purifiers, humidifiers, dehumidifiers, and ventilation systems for healthier indoor air.</li>
+                </ul>
+
+                <h3><i class="fa-solid fa-lightbulb"></i> Electrical Services</h3>
+                <ul>
+                    <li><i class="fas fa-bolt"></i> <strong>Electrical Troubleshooting & Repair:</strong> Diagnosing and fixing power outages, faulty wiring, and tripped breakers efficiently.</li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>Lighting Solutions:</strong> Installation and repair of light fixtures, ceiling fans, and smart lighting systems.</li>
+                    <li><i class="fas fa-boxes"></i> <strong>Panel Upgrades:</strong> Ensuring your electrical panel can safely support your current and future power demands.</li>
+                    <li><i class="fas fa-plug"></i> <strong>Outlets & Wiring:</strong> Installation of new circuits, outlets, and GFCI protection for enhanced safety.</li>
+                    <li><i class="fas fa-home"></i> <strong>Residential & Commercial:</strong> Expert electrical services for homes and businesses of all sizes.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="text-content full-width">
+                <h2>What Our Valued Customers Say</h2>
+                <p>Don't just take our word for it – hear directly from the homeowners and businesses in Waddell, AZ who have experienced the Gabriel's Air Care difference. We are incredibly proud of the positive feedback we receive, reflecting our dedication to quality service and customer satisfaction.</p>
+                <div class="testimonial">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"I can’t say enough good things about my experience with Gabriel. He was on time, clean, organized, had the best communication out of any company I have ever used, and his work is next level quality. I will be recommending him to many people."</p>
+                    <span class="author">— Mike Kabel</span>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> (6 stars!)
+                    </div>
+                    <p>"6 stars!! Gabriel and his company fixed my lights and my light switches, which were all mixed up. They also fixed my AC in the past. Great service by great people."</p>
+                    <span class="author">— Carmen Lopez</span>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Awesome work! I contacted Gabriel and service was delivered as promised. The work being completed was explained and pictures were shown after the service was completed. Thanks again for taking care of our HVAC needs!"</p>
+                    <span class="author">— Omar M</span>
+                </div>
+                <div class="testimonial">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Gabriel's Air Care responded quickly to our AC emergency. They were professional, courteous, and had our system running perfectly in no time. Highly recommend their reliable service!"</p>
+                    <span class="author">— Sarah T.</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="text-content full-width">
+                <h2>Frequently Asked Questions</h2>
+                <p>Have questions about your HVAC or electrical systems? Find answers to some common inquiries below. If you don't see your question, feel free to contact us directly!</p>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is the recommended frequency for HVAC maintenance?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We recommend having your HVAC system professionally serviced at least once a year, ideally in the spring for your AC and in the fall for your heating system. This ensures optimal performance, extends lifespan, and helps prevent unexpected breakdowns.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How can I improve my home's indoor air quality?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Improving indoor air quality involves several steps: regularly changing air filters, professional duct cleaning, using air purifiers, ensuring proper ventilation, and maintaining appropriate humidity levels. Gabriel's Air Care can assess your home and recommend tailored solutions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When should I consider replacing my electrical panel?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Consider a panel upgrade if your home is old (20+ years), you frequently experience tripped breakers, your lights flicker, you're adding major new appliances, or your current panel is outdated (e.g., fuse box). Our electricians can perform a safety inspection and recommend if an upgrade is necessary.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer emergency HVAC or electrical services?
+                        <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we understand that HVAC and electrical emergencies can happen at any time. While we primarily operate within our business hours, we strive to provide responsive assistance for urgent issues. Please call us directly for immediate support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact-info">
+            <div class="text-content full-width"> <h2>Get In Touch With Us</h2>
+                <p>Conveniently located in Waddell, AZ, Gabriel's Air Care is ready to serve your HVAC and electrical needs. Reach out to us for inquiries, service requests, or to schedule a consultation. We're here to provide the expert solutions you deserve.</p>
+                <p><i class="fa-solid fa-map-marker-alt"></i> <strong>Our Location:</strong> 6928 N Citrus Rd, Waddell, AZ 85355</p>
+                <p><i class="fa-solid fa-phone"></i> <strong>Call Us:</strong> <a href="tel:4805191893">480-519-1893</a></p>
+                <p><i class="fa-solid fa-envelope"></i> <strong>Email Us:</strong> <a href="mailto:info@gabrielsaircare.com">info@gabrielsaircare.com</a> (Placeholder Email - Please replace)</p>
+                <p style="margin-top: 25px;">Stay connected with us for the latest updates and tips:</p>
+                <p>
+                    <a href="#" aria-label="Follow us on Facebook" style="font-size: 2.2em; margin-right: 20px; color: var(--primary-blue);"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" aria-label="Follow us on Instagram" style="font-size: 2.2em; color: var(--primary-blue);"><i class="fab fa-instagram-square"></i></a>
+                </p>
+            </div>
+            </section>
+
+        <section id="business-hours">
+            <div class="text-content full-width">
+                <h2>Our Operating Hours</h2>
+                <p>We are available to serve you during the following business hours. For emergency services outside these hours, please call us directly, and we will do our best to assist you promptly.</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td>7:00 AM – 5:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>7:00 AM – 5:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>7:00 AM – 5:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td>7:00 AM – 5:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td>7:00 AM – 5:00 PM</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td class="closed">Closed</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td class="closed">Closed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 25px;">Please contact us to schedule a service or for any specific inquiries. We look forward to providing you with outstanding service!</p>
+            </div>
+        </section>
+    </main>
+
+    <section class="final-cta-section">
+        <h2>Ready for Reliable HVAC & Electrical Service?</h2>
+        <p>Whether you need urgent repairs, routine maintenance, or a new system installation, Gabriel's Air Care is here to provide reliable, efficient, and professional solutions. Don't let HVAC or electrical issues disrupt your comfort and safety.</p>
+        <a href="tel:4805191893" class="cta-button"><i class="fas fa-phone-alt"></i> Call Us Today: 480-519-1893</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Gabriel's Air Care. All rights reserved.</p>
+        <p>Proudly serving Waddell, AZ and surrounding communities with pride and professionalism.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const answer = item.nextElementSibling;
+                const icon = item.querySelector('.icon');
+
+                // Close all other open FAQs
+                document.querySelectorAll('.faq-question').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.nextElementSibling.classList.remove('open');
+                        otherItem.nextElementSibling.style.maxHeight = "0";
+                        otherItem.querySelector('.icon').style.transform = "rotate(0deg)";
+                    }
+                });
+
+                // Toggle current FAQ
+                item.classList.toggle('active');
+                answer.classList.toggle('open');
+
+                if (answer.classList.contains('open')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    icon.style.transform = "rotate(180deg)";
+                } else {
+                    answer.style.maxHeight = "0";
+                    icon.style.transform = "rotate(0deg)";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
